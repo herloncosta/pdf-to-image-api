@@ -15,8 +15,9 @@ app.post('/upload', upload.single('pdf'), async (req, res) => {
     if (!req.file) {
         return res.status(400).send('No file uploaded.')
     }
+
     const pdfPath = req.file.path
-    const outputDir = path.join('converted')
+    const outputDir = 'converted'
 
     if (!fs.existsSync(outputDir)) {
         fs.mkdirSync(outputDir, { recursive: true })
@@ -33,7 +34,6 @@ app.post('/upload', upload.single('pdf'), async (req, res) => {
         await poppler.convert(pdfPath, options)
         const imageFiles = fs.readdirSync(outputDir)
         const imagePaths = imageFiles.map(file => path.join(outputDir, file))
-
         res.status(200).send({ message: 'PDF converted successfully.', files: imagePaths })
     } catch (err) {
         console.log(`Error converting file: ${err}`)
