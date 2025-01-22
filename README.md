@@ -25,7 +25,7 @@ Este projeto é um servidor Node.js que permite o upload de arquivos PDF, conver
 1. Clone o repositório:
 
     ```bash
-    git clone https://github.com/seu-usuario/conversor-pdf-imagem.git
+    git clone https://github.com/herloncosta/conversor-pdf-imagem.git
     cd conversor-pdf-imagem
     ```
 
